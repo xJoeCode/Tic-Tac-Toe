@@ -1,0 +1,22 @@
+.gameContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 450px;
+}
+
+.gamePanel{
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+}
+
+
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
