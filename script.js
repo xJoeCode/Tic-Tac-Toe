@@ -38,6 +38,7 @@ const gameOn = (() => {
                 player1.turn++
             }
     }))
+
     function checkWinCondition(_player){
 
         wincondition = {
@@ -58,24 +59,21 @@ const gameOn = (() => {
         const playerArray = (gameBoard.filter(player => player.includes(`${_player}`)).map(n => n.replace(`${_player}`,'')))
         console.log(playerArray)
         
-        
         // loops every array in the wincondition object to check who matches the win conditions
         for (array in wincondition){
         const playerWin = checkWin(wincondition[array])
         console.log(playerWin)
         if (playerWin){
-            console.log(playerWin)
             alert(`${_player} Wins`)
             }
         }
 
-        // checks player array to see if the array matches the win conditions
+        // checks player array to see if the array matches the win conditions array
         function checkWin(winCondition){
             return winCondition.every(n => playerArray.includes(n))
             } 
             console.log(_player)
-    }
-        
+        }
             
     }}
     return{getTurn, start}
