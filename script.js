@@ -12,27 +12,28 @@ const player = (name, color) => {
     
     
 
-    const gameOn = (() => {
+const gameOn = (() => {
     let gameBoard = []
     const getTurn = (player) => player.turn++
     const start = (player1, player2) =>{
     const gamePanel = document.querySelectorAll(".gamePanel")
     gamePanel.forEach(gamePanel => gamePanel.addEventListener('click', function playermark(e){
+
         if(player1.turn > 0 && e.target.style.backgroundColor != player1.getColor() && e.target.style.backgroundColor != player2.getColor()){
             e.target.style.backgroundColor = player1.getColor()
             const datakey = e.target.getAttribute("data-key")
-            gameBoard.push(`player1${datakey}`)
-            //console.log(gameBoard)
-            checkWinCondition("player1")
+            gameBoard.push(`${player1.getName()}${datakey}`)
+            console.log(gameBoard)
+            checkWinCondition(player1.getName())
             player1.turn--
             player2.turn++
 
             } else if (player2.turn > 0 && e.target.style.backgroundColor != player1.getColor() && e.target.style.backgroundColor != player2.getColor()){
                 e.target.style.backgroundColor = player2.getColor()
                 const datakey = e.target.getAttribute("data-key")
-                gameBoard.push(`player2${datakey}`)
-                //console.log(gameBoard)
-                checkWinCondition("player2")
+                gameBoard.push(`${player2.getName()}${datakey}`)
+                console.log(gameBoard)
+                checkWinCondition(player2.getName())
                 player2.turn--
                 player1.turn++
             }
@@ -51,24 +52,31 @@ const player = (name, color) => {
         }
         
         // removes the player name from the array
+        if (gameBoard.length == 9){
+            alert("Its a Tie")
+        } else {
         const playerArray = (gameBoard.filter(player => player.includes(`${_player}`)).map(n => n.replace(`${_player}`,'')))
         console.log(playerArray)
         
+        
         // loops every array in the wincondition object to check who matches the win conditions
         for (array in wincondition){
-           const playerWin = checkWin(wincondition[array])
-           console.log(playerWin)
-           if (playerWin){
-               console.log(playerWin)
-               alert(`${_player} Wins`)
+        const playerWin = checkWin(wincondition[array])
+        console.log(playerWin)
+        if (playerWin){
+            console.log(playerWin)
+            alert(`${_player} Wins`)
             }
         }
+
         // checks player array to see if the array matches the win conditions
         function checkWin(winCondition){
-           return winCondition.every(n => playerArray.includes(n))
-        } 
-        console.log(_player)
-               
+            return winCondition.every(n => playerArray.includes(n))
+            } 
+            console.log(_player)
+    }
+        
+            
     }}
     return{getTurn, start}
 })()
@@ -76,9 +84,7 @@ const player = (name, color) => {
 
 
 
-const player1 = player("tom", "blue")
-const player2 = player("jimmy", "red")
-gameOn.getTurn(player1)
-
-console.log(player1)
-gameOn.start(player1, player2)
+const tom = player("tom", "blue")
+const jimmy = player("jimmy", "green")
+gameOn.getTurn(tom)
+gameOn.start(tom, jimmy)
