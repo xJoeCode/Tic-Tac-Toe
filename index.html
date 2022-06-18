@@ -7,8 +7,51 @@
     <title>Tic Tac Toe</title>
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="form">
+        <form>
+            <h1>Welcome to my 
+                <span class="orangeText">Tic Tac Toe</span> Game</h1>
+            <ul id="player1Form">
+                <li>
+                    <p> Welcome Player 1</p> 
+                    <p> Pick your name and avatar</p>
+                    <label for="Name"> Name:</label>
+                    <input type="text" id="name">
+                </li>
+                <li>
+                    <select name="avatar" id="avatar">
+                        <option value="fox">fox</option>
+                        <option value="deer">deer</option>
+                        <option value="owl">owl</option>
+                        <option value="bear">bear</option>
+                        <option value="parrot">parrot</option>
+                    </select>
+                </li>
+            </ul>
+            <ul id="player2Form">
+                <li>
+                    <p> Welcome Player 2</p> 
+                    <p> Pick your name and avatar</p>
+                    <label for="Name"> Name:</label>
+                    <input type="text" id="name">
+                </li>
+                <li>
+                    <select name="avatar" id="avatar">
+                        <option value="fox">fox</option>
+                        <option value="deer">deer</option>
+                        <option value="owl">owl</option>
+                        <option value="bear">bear</option>
+                        <option value="parrot">parrot</option>
+                    </select>
+                </li>
+            </ul>
+        </form>
+    </div>
     <div class="gameContainer">
         <div class="gamePanel" data-key="01"></div>
         <div class="gamePanel" data-key="02"></div>
