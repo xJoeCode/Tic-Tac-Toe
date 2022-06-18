@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="form">
+    <div class="formContainer">
         <form>
             <h1>Welcome to my 
                 <span class="orangeText">Tic Tac Toe</span> Game</h1>
@@ -24,13 +24,33 @@
                     <input type="text" id="name">
                 </li>
                 <li>
-                    <select name="avatar" id="avatar">
-                        <option value="fox">fox</option>
-                        <option value="deer">deer</option>
-                        <option value="owl">owl</option>
-                        <option value="bear">bear</option>
-                        <option value="parrot">parrot</option>
-                    </select>
+                    <fieldset> Please Select your Avatar</fieldset>
+                    <div id="avatarPicker">
+                        <label for="fox">
+                            <input type="radio" id="fox" name="avatar" value="fox">
+                            <img src="./Assets/fox.png" alt="fox">
+                        </label>
+                        
+                        <label for="deer">
+                            <input type="radio" id="deer" name="avatar" value="deer">
+                            <img src="./Assets/deer.png" alt="deer">
+                        </label>
+    
+                        <label for="owl">
+                            <input type="radio" id="owl" name="avatar" value="owl">
+                            <img src="./Assets/owl.png" alt="owl">
+                        </label>
+    
+                        <label for="bear">
+                            <input type="radio" id="bear" name="avatar" value="bear">
+                            <img src="./Assets/grizzly-bear.png" alt="bear">
+                        </label>
+                        
+                        <label for="parrot">
+                            <input type="radio" id="parrot" name="avatar" value="parrot">
+                            <img src="./Assets/parrot.png" alt="parrot">
+                        </label>
+                    </div>
                 </li>
             </ul>
             <ul id="player2Form">
@@ -41,15 +61,36 @@
                     <input type="text" id="name">
                 </li>
                 <li>
-                    <select name="avatar" id="avatar">
-                        <option value="fox">fox</option>
-                        <option value="deer">deer</option>
-                        <option value="owl">owl</option>
-                        <option value="bear">bear</option>
-                        <option value="parrot">parrot</option>
-                    </select>
+                    <fieldset> Please Select your Avatar</fieldset>
+                    <div id="avatarPicker">
+                        <label for="fox">
+                            <input type="radio" id="fox" name="avatar2" value="fox2">
+                            <img src="./Assets/fox.png" alt="fox">
+                        </label>
+                        
+                        <label for="deer">
+                            <input type="radio" id="deer" name="avatar2" value="deer2">
+                            <img src="./Assets/deer.png" alt="deer">
+                        </label>
+    
+                        <label for="owl">
+                            <input type="radio" id="owl" name="avatar2" value="owl2">
+                            <img src="./Assets/owl.png" alt="owl">
+                        </label>
+    
+                        <label for="bear">
+                            <input type="radio" id="bear" name="avatar2" value="bear2">
+                            <img src="./Assets/grizzly-bear.png" alt="bear">
+                        </label>
+                        
+                        <label for="parrot">
+                            <input type="radio" id="parrot" name="avatar2" value="parrot2">
+                            <img src="./Assets/parrot.png" alt="parrot">
+                        </label>
+                    </div>
                 </li>
             </ul>
+            <button type="button"> Start</button>
         </form>
     </div>
     <div class="gameContainer">
