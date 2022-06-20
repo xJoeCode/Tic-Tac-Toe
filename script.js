@@ -12,12 +12,12 @@ const player = (name, avatar) => {
         }
     }
     const getName = () => name
-    const getColor = () => color
+    //const getColor = () => color
     //const getAvatar = () => avatar
-    return {getName,getColor,turn, getAvatarValues}
+    return {getName,turn, getAvatarValues}
 }
 
-function gameStarter(name1, name2, avatar1, avatar2){
+const gameStarter = (name1, name2, avatar1, avatar2) =>{
 
     const getTurn = () =>{
         const starfirstValue = document.getElementsByName("start")
@@ -53,13 +53,15 @@ function gameStarter(name1, name2, avatar1, avatar2){
 
 const gameOn = (() => {
     let gameBoard = []
-    const getTurn = (player) => player.turn++
     const start = (player1, player2) =>{
     const gamePanel = document.querySelectorAll(".gamePanel")
     gamePanel.forEach(gamePanel => gamePanel.addEventListener('click', function playermark(e){
 
-        if(player1.turn > 0 && e.target.style.backgroundColor != player1.getColor() && e.target.style.backgroundColor != player2.getColor()){
-            e.target.style.backgroundColor = player1.getColor()
+        if(player1.turn > 0 ){
+            //e.target.style.backgroundColor = player1.getColor()
+            const icon = document.createElement("img")
+            icon.setAttribute("src", `./Assets/${player1.getAvatarValues()}.png`)
+            e.target.appendChild(icon)
             const datakey = e.target.getAttribute("data-key")
             gameBoard.push(`${player1.getName()}${datakey}`)
             console.log(gameBoard)
@@ -115,7 +117,7 @@ const gameOn = (() => {
         }
             
     }}
-    return{getTurn, start}
+    return{start}
 })()
     
 
