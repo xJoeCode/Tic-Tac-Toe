@@ -3,11 +3,30 @@
 
 
 
-const player = (name, color) => {
+const player = (name, avatar) => {
+    console.log('newplayer')
     let turn = 0;
+    //const hideform = () => {document.querySelector(".formContainer").style.display = "none"}
+    const getAvatarValues = () => {
+        const avatarValue = document.getElementsByName(avatar)
+        for(let i = 0; i < avatarValue.length; i++){
+            if(avatarValue[i].checked){
+                return avatarValue[i].value
+            }
+        }
+    }
     const getName = () => name
     const getColor = () => color
-    return{getName,getColor,turn}
+    //const getAvatar = () => avatar
+    return {getName,getColor,turn, getAvatarValues}
+}
+
+function gameStarter(name1, name2, avatar1, avatar2){
+    
+    const player1 = player(name1,avatar1)
+    const player2 = player(name2, avatar2)
+    console.log(player2.getAvatarValues())
+    document.querySelector(".formContainer").style.display = "none"
 }
     
     
@@ -82,7 +101,7 @@ const gameOn = (() => {
 
 
 
-const tom = player("tom", "blue")
-const jimmy = player("jimmy", "green")
-gameOn.getTurn(tom)
-gameOn.start(tom, jimmy)
+//const tom = player("tom", "blue")
+//const jimmy = player("jimmy", "green")
+//gameOn.getTurn(tom)
+//gameOn.start(tom, jimmy)

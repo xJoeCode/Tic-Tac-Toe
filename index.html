@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script>
+    </script>
 </head>
 <body>
     <div class="formContainer">
@@ -21,7 +23,7 @@
                     <p> Welcome Player 1</p> 
                     <p> Pick your name and avatar</p>
                     <label for="Name"> Name:</label>
-                    <input type="text" id="name">
+                    <input type="text" id="name1">
                 </li>
                 <li>
                     <fieldset> Please Select your Avatar</fieldset>
@@ -58,39 +60,43 @@
                     <p> Welcome Player 2</p> 
                     <p> Pick your name and avatar</p>
                     <label for="Name"> Name:</label>
-                    <input type="text" id="name">
+                    <input type="text" id="name2">
                 </li>
                 <li>
                     <fieldset> Please Select your Avatar</fieldset>
-                    <div id="avatarPicker">
-                        <label for="fox">
-                            <input type="radio" id="fox" name="avatar2" value="fox2">
+                    <div id="avatarPicker2">
+                        <label for="fox2">
+                            <input type="radio" id="fox2" name="avatar2" value="fox2">
                             <img src="./Assets/fox.png" alt="fox">
                         </label>
                         
-                        <label for="deer">
-                            <input type="radio" id="deer" name="avatar2" value="deer2">
+                        <label for="deer2">
+                            <input type="radio" id="deer2" name="avatar2" value="deer2">
                             <img src="./Assets/deer.png" alt="deer">
                         </label>
     
-                        <label for="owl">
-                            <input type="radio" id="owl" name="avatar2" value="owl2">
+                        <label for="owl2">
+                            <input type="radio" id="owl2" name="avatar2" value="owl2">
                             <img src="./Assets/owl.png" alt="owl">
                         </label>
     
-                        <label for="bear">
-                            <input type="radio" id="bear" name="avatar2" value="bear2">
+                        <label for="bear2">
+                            <input type="radio" id="bear2" name="avatar2" value="bear2">
                             <img src="./Assets/grizzly-bear.png" alt="bear">
                         </label>
                         
-                        <label for="parrot">
-                            <input type="radio" id="parrot" name="avatar2" value="parrot2">
+                        <label for="parrot2">
+                            <input type="radio" id="parrot2" name="avatar2" value="parrot2">
                             <img src="./Assets/parrot.png" alt="parrot">
                         </label>
                     </div>
                 </li>
             </ul>
-            <button type="button"> Start</button>
+            <button type="button" onclick=" gameStarter(
+                document.getElementById('name1').value,
+                document.getElementById('name2').value,
+                'avatar',
+                'avatar2')">Start</button>
         </form>
     </div>
     <div class="gameContainer">
