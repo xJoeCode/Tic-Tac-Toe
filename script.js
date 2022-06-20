@@ -1,8 +1,4 @@
 
-
-
-
-
 const player = (name, avatar) => {
     console.log('newplayer')
     let turn = 0;

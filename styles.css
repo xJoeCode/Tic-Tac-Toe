@@ -78,6 +78,7 @@ button:hover{
 }
 
 label img{
+    cursor: pointer;
     width: 50px;
     height: 50px;
     padding: 5px;
@@ -102,13 +103,65 @@ fieldset{
     list-style: none;
 }
 
-input[type="radio"]{
-    
+#avatarPicker2 input[type="radio"], #avatarPicker input[type="radio"]{
     position:absolute;
-    display:none;
+    display: none;
     top: 0%;
     width: 50px;
     height: 50px;
+}
+
+#player2, #player1{
+    cursor: pointer;
+    position: absolute;
+    bottom: -50%;
+    z-index: 9;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    
+}
+
+#player2:checked + #secondPlayerLabel  {
+    border-left: 20px solid #208800;
+}
+
+#player1:checked + #firstPlayerLabel{
+    border-left: 20px solid #208800;
+}
+
+#firstPlayerStartFirst{
+    
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-end;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#firstPlayerLabel, #secondPlayerLabel{
+    
+    margin-top: 10px;
+    background-color: #ebebeb ;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgb(114, 114, 114)
+    
+}
+
+#firstPlayerLabel p, #secondPlayerLabel p{
+    font-size: 1.2rem;
+    text-align: center;
+    
 }
 
 input:checked ~ img{
@@ -127,7 +180,7 @@ label{
     font-size: 1.2em;
 }
 
-input{
+input[type="text"]{
     width: 60%;
     height: 30px;
 }
