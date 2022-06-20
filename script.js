@@ -18,19 +18,36 @@ const player = (name, avatar) => {
 }
 
 function gameStarter(name1, name2, avatar1, avatar2){
-    console.log(name1)
-    const player1 = player(name1,avatar1)
-    const player2 = player(name2, avatar2)
-    const player1Avatar = player1.getAvatarValues()
-    const player2avatar = player2.getAvatarValues()
-    if (player1Avatar == player2avatar){
-        alert("Both players have same avatar kindly pick a different one")
-    } else if(name1 == "" || name2 == ""){
-        alert("Name Fields are empty")
-    } else {
-    document.querySelector(".formContainer").style.display = "none"
+
+    const getTurn = () =>{
+        const starfirstValue = document.getElementsByName("start")
+        for(let i = 0; i < starfirstValue.length; i++){
+            if(starfirstValue[i].checked){
+                if(starfirstValue[i].value == 1){
+                    console.log("player1getsturn")
+                    player1.turn++
+                } else if (starfirstValue[i].value == 2){
+                    player2.turn++
+                    console.log("player2getsturn")
+                }
+            }
+        }
     }
-}
+        const player1 = player(name1,avatar1)
+        const player2 = player(name2, avatar2)
+        const player1Avatar = player1.getAvatarValues()
+        const player2avatar = player2.getAvatarValues()
+        if (player1Avatar == player2avatar){
+            alert("Both players have same avatar kindly pick a different one")
+        } else if(name1 == "" || name2 == ""){
+            alert("Name Fields are empty")
+        } else {
+        document.querySelector(".formContainer").style.display = "none"
+        getTurn()
+        gameOn.start(player1, player2)
+        }
+    }
+
     
     
 
