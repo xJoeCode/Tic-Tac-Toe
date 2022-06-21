@@ -41,7 +41,10 @@ const gameStarter = (name1, name2, avatar1, avatar2) =>{
             alert("Both players have same avatar kindly pick a different one")
         } else if(name1 == "" || name2 == ""){
             alert("Name Fields are empty")
-        } else {
+        } else if (name1 == name2) {
+            alert("Both players have the same name, Kindly check name fields again")
+        }
+        else {
         document.querySelector(".formContainer").style.display = "none"
         getTurn()
         gameOn.start(player1, player2)
@@ -65,10 +68,9 @@ const gameOn = (() => {
             const datakey = e.target.getAttribute("data-key")
             gameBoard.push(`${player1.getName()}${datakey}`)
             console.log(gameBoard)
-            checkWinCondition(player1.getName())
             player1.turn--
             player2.turn++
-
+            checkWinCondition(player1.getName())
             } else if (player2.turn > 0 && !(e.target.hasChildNodes()) && e.target.className == "gamePanel"){
                 console.log(e.target)
                 //e.target.style.backgroundColor = player2.getColor()
@@ -78,9 +80,9 @@ const gameOn = (() => {
                 const datakey = e.target.getAttribute("data-key")
                 gameBoard.push(`${player2.getName()}${datakey}`)
                 console.log(gameBoard)
-                checkWinCondition(player2.getName())
                 player2.turn--
                 player1.turn++
+                checkWinCondition(player2.getName())
             }
     }))
 
@@ -107,9 +109,13 @@ const gameOn = (() => {
         // loops every array in the wincondition object to check who matches the win conditions
         for (array in wincondition){
         const playerWin = checkWin(wincondition[array])
-        console.log(playerWin)
         if (playerWin){
+            wincondition[array].forEach(element => document.querySelector(`[data-key="${element}"]`).style.backgroundColor = "black" )
             alert(`${_player} Wins`)
+            player1.turn = 0
+            player2.turn = 0
+            console.log(player1)
+            console.log(player2)
             }
         }
 
