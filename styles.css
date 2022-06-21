@@ -9,6 +9,18 @@
     width: 450px;
 }
 
+.gameBoard{
+    width: 50%;
+    height: 80%;
+    border-radius: 20px;
+    border: 10px solid black;
+    background-color: #00b396;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .gamePanel{
     box-sizing: border-box;
     border: 1px solid black;
@@ -17,10 +29,21 @@
     display: grid;
     place-items: center;
     cursor: pointer;
+    background-color: #ffae42;
+}
+
+.gamePanel:hover{
+    background-color: #fdf5e6
 }
 
 .gamePanel img{
     width: 80%;
+}
+
+#turnLabel{
+    font-family: var(--main-font);
+    font-size: 5rem;
+    color: #001818;
 }
 
 .formContainer{
@@ -31,6 +54,8 @@
     display: grid;
     border-radius: 20px;
     border: 10px solid #444444;
+    
+    
 }
 
 #player1Form, #player2Form{
@@ -67,7 +92,7 @@ form{
     grid-template-columns: 1fr 1fr;
     place-items: center;
     overflow: hidden;
-    
+    z-index: 2;
 }
 
 button{
@@ -195,12 +220,38 @@ input[type="text"]{
     height: 30px;
 }
 
+.cuteIcons{
+    position: fixed;
+    right: -8%;
+    z-index: -1;
+    transform: rotate(20deg); 
+}
+
+.cuteIcons img, .cuteIcons2 img{
+    width: 60%;
+    
+}
+
+.cuteIcons2{
+    position: fixed;
+    left: 2%;
+    bottom: 20%;
+    z-index: -1;
+    transform: rotate(-24deg); 
+}
+
+.cuteIcons2:hover{
+    transform: translate(0,-10px);
+}
+
 
 
 body{
+    
     margin: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #d8d8d8;

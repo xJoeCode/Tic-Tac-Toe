@@ -17,6 +17,7 @@ const player = (name, avatar) => {
     return {getName,turn, getAvatarValues}
 }
 
+
 const gameStarter = (name1, name2, avatar1, avatar2) =>{
 
     const getTurn = () =>{
@@ -46,6 +47,8 @@ const gameStarter = (name1, name2, avatar1, avatar2) =>{
         }
         else {
         document.querySelector(".formContainer").style.display = "none"
+        document.querySelector(".cuteIcons").style.display = "none"
+        document.querySelector(".cuteIcons2").style.display = "none"
         getTurn()
         gameOn.start(player1, player2)
         }
@@ -57,11 +60,14 @@ const gameStarter = (name1, name2, avatar1, avatar2) =>{
 const gameOn = (() => {
     let gameBoard = []
     const start = (player1, player2) =>{
+    if(player1.turn > 0){
+        document.querySelector("#turnLabel").textContent = `${player1.getName()}'s Turn`
+        } else if (player2.turn >0){
+            document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
+        }
     const gamePanel = document.querySelectorAll(".gamePanel")
     gamePanel.forEach(gamePanel => gamePanel.addEventListener('click', function playermark(e){
-
         if(player1.turn > 0 && !(e.target.hasChildNodes()) && e.target.className == "gamePanel"){
-            //e.target.style.backgroundColor = player1.getColor()
             const icon = document.createElement("img")
             icon.setAttribute("src", `./Assets/${player1.getAvatarValues()}.png`)
             e.target.appendChild(icon)
@@ -70,10 +76,10 @@ const gameOn = (() => {
             console.log(gameBoard)
             player1.turn--
             player2.turn++
+            document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
             checkWinCondition(player1.getName())
             } else if (player2.turn > 0 && !(e.target.hasChildNodes()) && e.target.className == "gamePanel"){
-                console.log(e.target)
-                //e.target.style.backgroundColor = player2.getColor()
+                document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
                 const icon = document.createElement("img")
                 icon.setAttribute("src", `./Assets/${player2.getAvatarValues()}.png`)
                 e.target.appendChild(icon)
@@ -82,6 +88,7 @@ const gameOn = (() => {
                 console.log(gameBoard)
                 player2.turn--
                 player1.turn++
+                document.querySelector("#turnLabel").textContent = `${player1.getName()}'s Turn`
                 checkWinCondition(player2.getName())
             }
     }))
@@ -111,7 +118,7 @@ const gameOn = (() => {
         const playerWin = checkWin(wincondition[array])
         if (playerWin){
             wincondition[array].forEach(element => document.querySelector(`[data-key="${element}"]`).style.backgroundColor = "black" )
-            alert(`${_player} Wins`)
+            document.querySelector("#turnLabel").textContent = `${_player} Win`
             player1.turn = 0
             player2.turn = 0
             }
@@ -131,7 +138,9 @@ const gameOn = (() => {
 
 
 
-//const tom = player("tom", "blue")
-//const jimmy = player("jimmy", "green")
-//gameOn.getTurn(tom)
-//gameOn.start(tom, jimmy)
+
+
+
+
+
+
