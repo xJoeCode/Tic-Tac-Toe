@@ -65,6 +65,17 @@ const gameOn = (() => {
         } else if (player2.turn >0){
             document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
         }
+    const gameBoardIcons = document.querySelector(".gameBoard")
+    const player1Icon = document.createElement("img")
+    player1Icon.setAttribute("src", `./Assets/${player1.getAvatarValues()}.png`)
+    player1Icon.classList.add("player1Icon")
+    const player2Icon = document.createElement("img")
+    player2Icon.setAttribute("src", `./Assets/${player2.getAvatarValues()}.png`)
+    player2Icon.classList.add("player2Icon")
+    gameBoardIcons.appendChild(player1Icon)
+    gameBoardIcons.appendChild(player2Icon)
+        
+        
     const gamePanel = document.querySelectorAll(".gamePanel")
     gamePanel.forEach(gamePanel => gamePanel.addEventListener('click', function playermark(e){
         if(player1.turn > 0 && !(e.target.hasChildNodes()) && e.target.className == "gamePanel"){
@@ -108,7 +119,7 @@ const gameOn = (() => {
         
         // removes the player name from the array
         if (gameBoard.length == 9){
-            alert("Its a Tie")
+            document.querySelector("#turnLabel").textContent = "Its a Tie"
         } else {
         const playerArray = (gameBoard.filter(player => player.includes(`${_player}`)).map(n => n.replace(`${_player}`,'')))
         console.log(playerArray)

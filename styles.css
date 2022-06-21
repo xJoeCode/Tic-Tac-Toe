@@ -10,7 +10,7 @@
 }
 
 .gameBoard{
-    width: 50%;
+    width: 70%;
     height: 80%;
     border-radius: 20px;
     border: 10px solid black;
@@ -19,6 +19,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.gameBoard .player1Icon{
+    position: absolute;
+    width: 200px;
+    left: 20%;
+    top: 0%;
+    z-index: -2;
+}
+
+.gameBoard .player2Icon{
+    position: absolute;
+    width: 200px;
+    right: 20%;
+    top: 0%;
+    z-index: -2;
 }
 
 .gamePanel{
@@ -38,6 +54,7 @@
 
 .gamePanel img{
     width: 80%;
+    pointer-events: none;
 }
 
 #turnLabel{
@@ -54,7 +71,6 @@
     display: grid;
     border-radius: 20px;
     border: 10px solid #444444;
-    
     
 }
 
@@ -113,7 +129,8 @@ button:hover{
 }
 
 label img{
-    cursor: pointer;
+    
+    pointer-events: none;
     width: 50px;
     height: 50px;
     padding: 5px;
@@ -139,8 +156,9 @@ fieldset{
 }
 
 #avatarPicker2 input[type="radio"], #avatarPicker input[type="radio"]{
+    cursor: pointer;
     position:absolute;
-    display: none;
+    opacity: 0;
     top: 0%;
     width: 50px;
     height: 50px;
