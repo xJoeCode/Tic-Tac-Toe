@@ -92,11 +92,11 @@ const gameOn = (() => {
             winCondition1: ['01', '02' ,'03'],
             winCondition2: ['01', '04', '07'],
             winCondition3: ['01', '05', '09'],
-            winCondition3: ['02', '05', '08'],
-            winCondition4: ['03', '05', '07'],
-            winCondition5: ['03', '06', '09'],
-            winCondition6: ['04', '05', '06'],
-            winCondition7: ['07', '08', '09']
+            winCondition4: ['02', '05', '08'],
+            winCondition5: ['03', '05', '07'],
+            winCondition6: ['03', '06', '09'],
+            winCondition7: ['04', '05', '06'],
+            winCondition8: ['07', '08', '09']
         }
         
         // removes the player name from the array
@@ -114,8 +114,6 @@ const gameOn = (() => {
             alert(`${_player} Wins`)
             player1.turn = 0
             player2.turn = 0
-            console.log(player1)
-            console.log(player2)
             }
         }
 
