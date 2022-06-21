@@ -57,7 +57,7 @@ const gameOn = (() => {
     const gamePanel = document.querySelectorAll(".gamePanel")
     gamePanel.forEach(gamePanel => gamePanel.addEventListener('click', function playermark(e){
 
-        if(player1.turn > 0 ){
+        if(player1.turn > 0 && !(e.target.hasChildNodes()) && e.target.className == "gamePanel"){
             //e.target.style.backgroundColor = player1.getColor()
             const icon = document.createElement("img")
             icon.setAttribute("src", `./Assets/${player1.getAvatarValues()}.png`)
@@ -69,8 +69,12 @@ const gameOn = (() => {
             player1.turn--
             player2.turn++
 
-            } else if (player2.turn > 0 && e.target.style.backgroundColor != player1.getColor() && e.target.style.backgroundColor != player2.getColor()){
-                e.target.style.backgroundColor = player2.getColor()
+            } else if (player2.turn > 0 && !(e.target.hasChildNodes()) && e.target.className == "gamePanel"){
+                console.log(e.target)
+                //e.target.style.backgroundColor = player2.getColor()
+                const icon = document.createElement("img")
+                icon.setAttribute("src", `./Assets/${player2.getAvatarValues()}.png`)
+                e.target.appendChild(icon)
                 const datakey = e.target.getAttribute("data-key")
                 gameBoard.push(`${player2.getName()}${datakey}`)
                 console.log(gameBoard)
