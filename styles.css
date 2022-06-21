@@ -39,6 +39,10 @@
     transition: 1s ease-in-out;
 }
 
+.gameBoard button{
+    margin-top: 40px;
+}
+
 .gamePanel{
     box-sizing: border-box;
     border: 1px solid black;
@@ -72,8 +76,7 @@
     height: 80%;
     display: grid;
     border-radius: 20px;
-    border: 10px solid #444444;
-    
+    border: 10px solid #444444;  
 }
 
 #player1Form, #player2Form{
@@ -215,8 +218,7 @@ fieldset{
 
 #firstPlayerLabel p, #secondPlayerLabel p{
     font-size: 1.2rem;
-    text-align: center;
-    
+    text-align: center; 
 }
 
 input:checked ~ img{
@@ -263,8 +265,6 @@ input[type="text"]{
 .cuteIcons2:hover{
     transform: translate(0,-10px);
 }
-
-
 
 body{
     

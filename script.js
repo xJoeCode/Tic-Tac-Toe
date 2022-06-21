@@ -65,6 +65,7 @@ const gameOn = (() => {
         } else if (player2.turn >0){
             document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
         }
+
     const gameBoardIcons = document.querySelector(".gameBoard")
     const player1Icon = document.createElement("img")
     player1Icon.setAttribute("src", `./Assets/${player1.getAvatarValues()}.png`)
@@ -116,7 +117,6 @@ const gameOn = (() => {
             winCondition7: ['04', '05', '06'],
             winCondition8: ['07', '08', '09']
         }
-        
         // removes the player name from the array
         if (gameBoard.length == 9){
             document.querySelector("#turnLabel").textContent = "Its a Tie"
@@ -138,14 +138,12 @@ const gameOn = (() => {
             player2.turn = 0
             }
         }
-
         // checks player array to see if the array matches the win conditions array
         function checkWin(winCondition){
             return winCondition.every(n => playerArray.includes(n))
             } 
             console.log(_player)
         }
-            
     }}
     return{start}
 })()
