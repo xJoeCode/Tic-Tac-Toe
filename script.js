@@ -68,10 +68,10 @@ const gameOn = (() => {
     const gameBoardIcons = document.querySelector(".gameBoard")
     const player1Icon = document.createElement("img")
     player1Icon.setAttribute("src", `./Assets/${player1.getAvatarValues()}.png`)
-    player1Icon.classList.add("player1Icon")
+    player1Icon.classList.add(`${player1.getName()}Icon`)
     const player2Icon = document.createElement("img")
     player2Icon.setAttribute("src", `./Assets/${player2.getAvatarValues()}.png`)
-    player2Icon.classList.add("player2Icon")
+    player2Icon.classList.add(`${player2.getName()}Icon`)
     gameBoardIcons.appendChild(player1Icon)
     gameBoardIcons.appendChild(player2Icon)
         
@@ -128,8 +128,12 @@ const gameOn = (() => {
         for (array in wincondition){
         const playerWin = checkWin(wincondition[array])
         if (playerWin){
-            wincondition[array].forEach(element => document.querySelector(`[data-key="${element}"]`).style.backgroundColor = "black" )
+            wincondition[array].forEach(element => document.querySelector(`[data-key="${element}"]`).style.backgroundColor = "#8a3324" )
             document.querySelector("#turnLabel").textContent = `${_player} Win`
+            console.log(`${_player}Icon`)
+            const playerIcon = document.querySelector(`.${_player}Icon`)
+            playerIcon.style.zIndex= "9"
+            playerIcon.style.transform = "translateY(600px) rotate(360deg)"
             player1.turn = 0
             player2.turn = 0
             }
