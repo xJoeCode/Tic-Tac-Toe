@@ -62,8 +62,10 @@ const gameOn = (() => {
                 if(starfirstValue[i].value == 1){
                     console.log("player1getsturn")
                     player1.turn++
+                    document.querySelector("#turnLabel").textContent = `${player1.getName()}'s Turn`
                 } else if (starfirstValue[i].value == 2){
                     player2.turn++
+                    document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
                     console.log("player2getsturn")
                 }
             }
@@ -72,11 +74,6 @@ const gameOn = (() => {
 
     const start = (player1, player2) => {
 
-    if(player1.turn > 0){
-        document.querySelector("#turnLabel").textContent = `${player1.getName()}'s Turn`
-        } else if (player2.turn >0){
-            document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
-        }
 
     const gameBoardIcons = document.querySelector(".gameBoard")
     const player1Icon = document.createElement("img")
@@ -144,9 +141,9 @@ const gameOn = (() => {
             wincondition[array].forEach(element => document.querySelector(`[data-key="${element}"]`).style.backgroundColor = "#8a3324" )
             document.querySelector("#turnLabel").textContent = `${_player} Win`
             console.log(`${_player}Icon`)
-            //const playerIcon = document.querySelector(`.${_player}Icon`)
-            //playerIcon.style.zIndex= "9"
-            //playerIcon.style.transform = "translateY(600px) rotate(360deg)"
+            const playerIcon = document.querySelector(`.${_player}Icon`)
+            playerIcon.style.zIndex= "9"
+            playerIcon.style.transform = "translateY(600px) rotate(360deg)"
             player1.turn = 0
             player2.turn = 0
             }
