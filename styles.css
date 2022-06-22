@@ -69,6 +69,11 @@
     color: #001818;
 }
 
+#resetButton{
+    position: relative;
+    right: 50%;
+}
+
 .formContainer{
     position: fixed;
     background: linear-gradient(60deg, #00B2B3 50%, #FF8E9C 50%);

@@ -20,20 +20,7 @@ const player = (name, avatar) => {
 
 const gameStarter = (name1, name2, avatar1, avatar2) =>{
 
-    const getTurn = () =>{
-        const starfirstValue = document.getElementsByName("start")
-        for(let i = 0; i < starfirstValue.length; i++){
-            if(starfirstValue[i].checked){
-                if(starfirstValue[i].value == 1){
-                    console.log("player1getsturn")
-                    player1.turn++
-                } else if (starfirstValue[i].value == 2){
-                    player2.turn++
-                    console.log("player2getsturn")
-                }
-            }
-        }
-    }
+    
         const player1 = player(name1,avatar1)
         const player2 = player(name2, avatar2)
         const player1Avatar = player1.getAvatarValues()
@@ -49,17 +36,42 @@ const gameStarter = (name1, name2, avatar1, avatar2) =>{
         document.querySelector(".formContainer").style.display = "none"
         document.querySelector(".cuteIcons").style.display = "none"
         document.querySelector(".cuteIcons2").style.display = "none"
-        getTurn()
+
+        const resetButton =  document.getElementById("resetterButton")
+        resetButton.onclick = function() { gameOn.resetAll(player1,player2) }
+
+        //gameOn.addresetFunc(player1, player2)
+        gameOn.getTurn(player1, player2)
         gameOn.start(player1, player2)
+        
         }
     }
 
-    
+
     
 
 const gameOn = (() => {
+
     let gameBoard = []
-    const start = (player1, player2) =>{
+   
+
+    const getTurn = (player1, player2) =>{
+        const starfirstValue = document.getElementsByName("start")
+        for(let i = 0; i < starfirstValue.length; i++){
+            if(starfirstValue[i].checked){
+                if(starfirstValue[i].value == 1){
+                    console.log("player1getsturn")
+                    player1.turn++
+                } else if (starfirstValue[i].value == 2){
+                    player2.turn++
+                    console.log("player2getsturn")
+                }
+            }
+        }
+    }
+
+    const start = (player1, player2) => {
+
     if(player1.turn > 0){
         document.querySelector("#turnLabel").textContent = `${player1.getName()}'s Turn`
         } else if (player2.turn >0){
@@ -75,7 +87,8 @@ const gameOn = (() => {
     player2Icon.classList.add(`${player2.getName()}Icon`)
     gameBoardIcons.appendChild(player1Icon)
     gameBoardIcons.appendChild(player2Icon)
-        
+
+
         
     const gamePanel = document.querySelectorAll(".gamePanel")
     gamePanel.forEach(gamePanel => gamePanel.addEventListener('click', function playermark(e){
@@ -131,9 +144,9 @@ const gameOn = (() => {
             wincondition[array].forEach(element => document.querySelector(`[data-key="${element}"]`).style.backgroundColor = "#8a3324" )
             document.querySelector("#turnLabel").textContent = `${_player} Win`
             console.log(`${_player}Icon`)
-            const playerIcon = document.querySelector(`.${_player}Icon`)
-            playerIcon.style.zIndex= "9"
-            playerIcon.style.transform = "translateY(600px) rotate(360deg)"
+            //const playerIcon = document.querySelector(`.${_player}Icon`)
+            //playerIcon.style.zIndex= "9"
+            //playerIcon.style.transform = "translateY(600px) rotate(360deg)"
             player1.turn = 0
             player2.turn = 0
             }
@@ -143,9 +156,30 @@ const gameOn = (() => {
             return winCondition.every(n => playerArray.includes(n))
             } 
             console.log(_player)
+            }
         }
-    }}
-    return{start}
+    }
+
+
+    const resetAll = (player1,player2) => {
+
+            console.log("resetting")
+            const gamePanel = document.querySelectorAll(".gamePanel")
+            gamePanel.forEach(gamePanel => {
+                gamePanel.style.backgroundColor = "#ffae42"
+                if (gamePanel.firstChild){
+                        gamePanel.removeChild(gamePanel.firstChild)
+                }
+            })
+            gameBoard = []
+            getTurn(player1,player2)
+            
+            
+    }
+
+
+
+        return{start,getTurn,resetAll}
 })()
     
 

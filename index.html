@@ -22,7 +22,7 @@
                 <li>
                     <p> Welcome Player 1</p> 
                     <p> Pick your name and avatar</p>
-                    <label for="Name"> Name:</label>
+                    <label for="name1"> Name:</label>
                     <input type="text" id="name1">
                 </li>
                 <li>
@@ -65,7 +65,7 @@
                 <li>
                     <p> Welcome Player 2</p> 
                     <p> Pick your name and avatar</p>
-                    <label for="Name"> Name:</label>
+                    <label for="name2"> Name:</label>
                     <input type="text" id="name2">
                 </li>
                 <li>
@@ -105,7 +105,7 @@
                     </label>
                 </li>
             </ul>
-            <button type="button" onclick=" gameStarter(
+            <button type="button" id="playerForm" onclick=" gameStarter(
                 document.getElementById('name1').value,
                 document.getElementById('name2').value,
                 'avatar',
@@ -132,6 +132,7 @@
             <div class="gamePanel" data-key="08"></div>
             <div class="gamePanel" data-key="09"></div>
         </div>
+        <button id="resetterButton" type="button">Reset</button>
     </div>
    
     
