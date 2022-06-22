@@ -141,9 +141,9 @@ const gameOn = (() => {
             wincondition[array].forEach(element => document.querySelector(`[data-key="${element}"]`).style.backgroundColor = "#8a3324" )
             document.querySelector("#turnLabel").textContent = `${_player} Win`
             console.log(`${_player}Icon`)
-            const playerIcon = document.querySelector(`.${_player}Icon`)
-            playerIcon.style.zIndex= "9"
-            playerIcon.style.transform = "translateY(600px) rotate(360deg)"
+            //const playerIcon = document.querySelector(`.${_player}Icon`)
+            //playerIcon.style.zIndex= "9"
+            //playerIcon.style.transform = "translateY(600px) rotate(360deg)"
             player1.turn = 0
             player2.turn = 0
             }
