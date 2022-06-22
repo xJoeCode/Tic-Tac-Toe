@@ -37,7 +37,7 @@ const gameStarter = (name1, name2, avatar1, avatar2) =>{
         document.querySelector(".cuteIcons").style.display = "none"
         document.querySelector(".cuteIcons2").style.display = "none"
 
-        const resetButton =  document.getElementById("resetterButton")
+        const resetButton =  document.getElementById("resetButton")
         resetButton.onclick = function() { gameOn.resetAll(player1,player2) }
 
         //gameOn.addresetFunc(player1, player2)
@@ -157,21 +157,17 @@ const gameOn = (() => {
         }
     }
 
-
     const resetAll = (player1,player2) => {
-
             console.log("resetting")
             const gamePanel = document.querySelectorAll(".gamePanel")
             gamePanel.forEach(gamePanel => {
-                gamePanel.style.backgroundColor = "#ffae42"
+                gamePanel.removeAttribute('style');
                 if (gamePanel.firstChild){
                         gamePanel.removeChild(gamePanel.firstChild)
                 }
             })
             gameBoard = []
-            getTurn(player1,player2)
-            
-            
+            getTurn(player1,player2) 
     }
 
 

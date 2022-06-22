@@ -55,7 +55,7 @@
 }
 
 .gamePanel:hover{
-    background-color: #fdf5e6
+    background-color: #fdf5e6;
 }
 
 .gamePanel img{
@@ -69,10 +69,7 @@
     color: #001818;
 }
 
-#resetButton{
-    position: relative;
-    right: 50%;
-}
+
 
 .formContainer{
     position: fixed;
@@ -132,6 +129,7 @@ button{
     margin-bottom: 80px;
     grid-column: 1 /-1;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 button:hover{
