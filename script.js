@@ -1,51 +1,92 @@
 
-const player = (name, avatar) => {
-    console.log('newplayer')
-    let turn = 0;
-    //const hideform = () => {document.querySelector(".formContainer").style.display = "none"}
-    const getAvatarValues = () => {
-        const avatarValue = document.getElementsByName(avatar)
+class player {
+
+constructor (name, avatar) {
+    this.name =  name
+    this.avatar = avatar
+}
+    turn = 0;
+
+    get avatarValues(){
+        return this.calcAvatarValues()
+    }
+
+  calcAvatarValues() {
+        const avatarValue = document.getElementsByName(this.avatar)
         for(let i = 0; i < avatarValue.length; i++){
             if(avatarValue[i].checked){
-                return avatarValue[i].value
+               return avatarValue[i].value
             }
         }
     }
-    const getName = () => name
-    //const getColor = () => color
-    //const getAvatar = () => avatar
-    return {getName,turn, getAvatarValues}
+    
 }
+
+
 
 
 const gameStarter = (name1, name2, avatar1, avatar2) =>{
 
     
-        const player1 = player(name1,avatar1)
-        const player2 = player(name2, avatar2)
-        const player1Avatar = player1.getAvatarValues()
-        const player2avatar = player2.getAvatarValues()
-        if (player1Avatar == player2avatar){
-            alert("Both players have same avatar kindly pick a different one")
-        } else if(name1 == "" || name2 == ""){
-            alert("Name Fields are empty")
-        } else if (name1 == name2) {
-            alert("Both players have the same name, Kindly check name fields again")
-        }
-        else {
-        document.querySelector(".formContainer").style.display = "none"
-        document.querySelector(".cuteIcons").style.display = "none"
-        document.querySelector(".cuteIcons2").style.display = "none"
+    const player1 = new player(name1,avatar1)
+    const player2 = new player(name2,avatar2)
+    console.log(player1)
+    const player1Avatar = player1.avatarValues
+    const player2avatar = player2.avatarValues
+    if (player1Avatar == player2avatar){
+        alert("Both players have same avatar kindly pick a different one")
+    } else if(name1 == "" || name2 == ""){
+        alert("Name Fields are empty")
+    } else if (name1 == name2) {
+        alert("Both players have the same name, Kindly check name fields again")
+    }
+    else {
+    document.querySelector(".formContainer").style.display = "none"
+    document.querySelector(".cuteIcons").style.display = "none"
+    document.querySelector(".cuteIcons2").style.display = "none"
 
-        const resetButton =  document.getElementById("resetButton")
-        resetButton.onclick = function() { gameOn.resetAll(player1,player2) }
+    const resetButton =  document.getElementById("resetButton")
+    resetButton.onclick = function() { gameOn.resetAll(player1,player2) }
+
+    //gameOn.addresetFunc(player1, player2)
+    gameOn.getTurn(player1, player2)
+    gameOn.start(player1, player2)
+    
+    }
+}
+
+
+
+
+
+//const gameStarter = (name1, name2, avatar1, avatar2) =>{
+
+    
+ //       const player1 = player(name1,avatar1)
+ //       const player2 = player(name2, avatar2)
+ //       const player1Avatar = player1.getAvatarValues()
+ //       const player2avatar = player2.getAvatarValues()
+//        if (player1Avatar == player2avatar){
+ //           alert("Both players have same avatar kindly pick a different one")
+ //       } else if(name1 == "" || name2 == ""){
+ //           alert("Name Fields are empty")
+ //       } else if (name1 == name2) {
+//            alert("Both players have the same name, Kindly check name fields again")
+//        }
+//        else {
+ //       document.querySelector(".formContainer").style.display = "none"
+ //       document.querySelector(".cuteIcons").style.display = "none"
+//        document.querySelector(".cuteIcons2").style.display = "none"
+
+//        const resetButton =  document.getElementById("resetButton")
+//        resetButton.onclick = function() { gameOn.resetAll(player1,player2) }
 
         //gameOn.addresetFunc(player1, player2)
-        gameOn.getTurn(player1, player2)
-        gameOn.start(player1, player2)
+ //       gameOn.getTurn(player1, player2)
+//        gameOn.start(player1, player2)
         
-        }
-    }
+//        }
+ //   }
 
 
     
@@ -62,10 +103,10 @@ const gameOn = (() => {
                 if(starfirstValue[i].value == 1){
                     console.log("player1getsturn")
                     player1.turn++
-                    document.querySelector("#turnLabel").textContent = `${player1.getName()}'s Turn`
+                    document.querySelector("#turnLabel").textContent = `${player1.name}'s Turn`
                 } else if (starfirstValue[i].value == 2){
                     player2.turn++
-                    document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
+                    document.querySelector("#turnLabel").textContent = `${player2.name}'s Turn`
                     console.log("player2getsturn")
                 }
             }
@@ -77,11 +118,11 @@ const gameOn = (() => {
 
     const gameBoardIcons = document.querySelector(".gameBoard")
     const player1Icon = document.createElement("img")
-    player1Icon.setAttribute("src", `./Assets/${player1.getAvatarValues()}.png`)
-    player1Icon.classList.add(`${player1.getName()}Icon`)
+    player1Icon.setAttribute("src", `./Assets/${player1.avatarValues}.png`)
+    player1Icon.classList.add(`${player1.name}Icon`)
     const player2Icon = document.createElement("img")
-    player2Icon.setAttribute("src", `./Assets/${player2.getAvatarValues()}.png`)
-    player2Icon.classList.add(`${player2.getName()}Icon`)
+    player2Icon.setAttribute("src", `./Assets/${player2.avatarValues}.png`)
+    player2Icon.classList.add(`${player2.name}Icon`)
     gameBoardIcons.appendChild(player1Icon)
     gameBoardIcons.appendChild(player2Icon)
 
@@ -91,27 +132,27 @@ const gameOn = (() => {
     gamePanel.forEach(gamePanel => gamePanel.addEventListener('click', function playermark(e){
         if(player1.turn > 0 && !(e.target.hasChildNodes()) && e.target.className == "gamePanel"){
             const icon = document.createElement("img")
-            icon.setAttribute("src", `./Assets/${player1.getAvatarValues()}.png`)
+            icon.setAttribute("src", `./Assets/${player1.avatarValues}.png`)
             e.target.appendChild(icon)
             const datakey = e.target.getAttribute("data-key")
-            gameBoard.push(`${player1.getName()}${datakey}`)
+            gameBoard.push(`${player1.name}${datakey}`)
             console.log(gameBoard)
             player1.turn--
             player2.turn++
-            document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
-            checkWinCondition(player1.getName())
+            document.querySelector("#turnLabel").textContent = `${player2.name}'s Turn`
+            checkWinCondition(player1.name)
             } else if (player2.turn > 0 && !(e.target.hasChildNodes()) && e.target.className == "gamePanel"){
-                document.querySelector("#turnLabel").textContent = `${player2.getName()}'s Turn`
+                document.querySelector("#turnLabel").textContent = `${player2.name}'s Turn`
                 const icon = document.createElement("img")
-                icon.setAttribute("src", `./Assets/${player2.getAvatarValues()}.png`)
+                icon.setAttribute("src", `./Assets/${player2.avatarValues}.png`)
                 e.target.appendChild(icon)
                 const datakey = e.target.getAttribute("data-key")
-                gameBoard.push(`${player2.getName()}${datakey}`)
+                gameBoard.push(`${player2.name}${datakey}`)
                 console.log(gameBoard)
                 player2.turn--
                 player1.turn++
-                document.querySelector("#turnLabel").textContent = `${player1.getName()}'s Turn`
-                checkWinCondition(player2.getName())
+                document.querySelector("#turnLabel").textContent = `${player1.name}'s Turn`
+                checkWinCondition(player2.name)
             }
     }))
 
